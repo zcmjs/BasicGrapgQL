@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 public class Query implements GraphQLQueryResolver {
 
     public String firstQuery() {
-        return "First Query";
+        return "Enigma 2137";
     }
 
 }
