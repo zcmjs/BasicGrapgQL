@@ -2,11 +2,43 @@ type Query {
     firstQuery : String
     firstQuery2 : String
     fullName(firstNamex: String, lastNamex: String): String # query{fullName(firstNamex: "Piotr", lastNamex: "Shadow")}
-#    przy dwóch takich samych nazwach, bierze poźniejsza nazwe
+    #    przy dwóch takich samych nazwach, bierze poźniejsza nazwe
     fullNameFull(fullNameRequest: FullNameRequest): String # query{fullNameFull(fullNameRequest: {firstName: "Spuszka" lastName: "Cipuszka"})
+
+#    query{ getStudent(id: 1){
+#        id
+#        firstName
+#        lastName
+#        email
+#        street
+#        city
+#        learningSubjects {
+#            id
+#            subjectName
+#            marksObtained
+#        }
+#    }}
+    getStudent(id: Long): StudentResponse
+
 }
 
 input FullNameRequest {
     firstName: String!
     lastName: String
+}
+
+type StudentResponse {
+    id: Long
+    firstName: String
+    lastName: String
+    email: String
+    street: String
+    city: String
+    learningSubjects: [SubjectResponse]
+}
+
+type SubjectResponse {
+    id: Long
+    subjectName: String
+    marksObtained: Float
 }
